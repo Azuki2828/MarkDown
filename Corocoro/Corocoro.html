@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Corocoro_2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E6%B2%B3%E5%8E%9F%E9%9B%BB%E5%AD%90%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E5%B0%82%E9%96%80%E5%AD%A6%E6%A0%A1br%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%82%BF%E3%83%BC%E7%A7%91-2%E5%B9%B4-%E6%9D%B1-%E6%B5%A9%E6%A8%B9">河原電子ビジネス専門学校<br>ゲームクリエイター科　　2年　東　浩樹</h1>
+<h3 id="%E7%9B%AE%E6%AC%A1">目次</h3>
+<ul>
+<li><a href="#%E6%A6%82%E8%A6%81">1.概要</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E8%AA%AC%E6%98%8E">2.操作説明</a></li>
+<li><a href="#%E6%8B%85%E5%BD%93%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89">3.担当ソースコード</a></li>
+<li><a href="#%E6%94%B9%E9%80%A0%E3%81%97%E3%81%9F%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89">4.改造したエンジンコード</a></li>
+<li><a href="#%E6%8A%80%E8%A1%93%E8%A6%81%E7%B4%A0">5.技術要素</a>
+<ul>
+<li><a href="#1pbr%E7%89%A9%E7%90%86%E3%83%99%E3%83%BC%E3%82%B9%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0">1.PBR（物理ベースレンダリング）</a></li>
+<li><a href="#2%E3%83%87%E3%83%97%E3%82%B9%E3%82%B7%E3%83%A3%E3%83%89%E3%82%A6">2.デプスシャドウ</a>
+<ul>
+<li><a href="#21%E3%82%B7%E3%83%A3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%83%E3%83%97%E3%81%AE%E4%BD%9C%E6%88%90">2.1.シャドウマップの作成</a></li>
+<li><a href="#22%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E5%BD%B1%E3%82%92%E8%90%BD%E3%81%A8%E3%81%99">2.2.モデルに影を落とす</a></li>
+</ul>
+</li>
+<li><a href="#3%E5%B7%9D%E7%80%AC%E5%BC%8F%E3%83%96%E3%83%AB%E3%83%BC%E3%83%A0">3.川瀬式ブルーム</a></li>
+<li><a href="#4%E8%BC%AA%E9%83%AD%E7%B7%9A%E3%81%AE%E5%AE%9F%E7%8F%BE">4.輪郭線の実現</a></li>
+</ul>
+</li>
+<li><a href="#%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%81%A8%E8%8B%A6%E5%8A%B4%E3%81%97%E3%81%9F%E7%82%B9">6.こだわりと苦労した点</a>
+<ul>
+<li><a href="#1%E7%A3%81%E5%8A%9B%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">1.磁力について</a></li>
+<li><a href="#2%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">2.ライトについて</a><br><br><br></li>
+</ul>
+</li>
+</ul>
+<h1 id="%E6%A6%82%E8%A6%81">概要</h1>
+<h2 id="%E4%BD%9C%E5%93%81%E5%90%8D%E7%A3%81%E5%8A%9B%E5%8F%8D%E8%BB%A2%E3%82%B3%E3%83%AD%E3%82%B3%E3%83%BC%E3%83%AD">作品名：磁力反転コロコーロ</h2>
+<img src = "image/title.png" ald = "ゲーム概要" width = "384" height = "256">
+<img src = "image/play.png" ald = "ゲーム概要" width = "384" height = "256">
+<h2 id="%E4%BD%BF%E7%94%A8%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E5%AD%A6%E5%86%85%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%82%92%E6%94%B9%E9%80%A0%E3%81%97%E3%81%9F%E3%82%82%E3%81%AE">使用ゲームエンジン：学内エンジンを改造したもの</h2>
+<h2 id="%E4%BD%BF%E7%94%A8%E8%A8%80%E8%AA%9Echlsl">使用言語：C++、HLSL</h2>
+<h2 id="%E4%BD%BF%E7%94%A8%E3%83%84%E3%83%BC%E3%83%ABvisual-studio-20193ds-max">使用ツール：Visual Studio 2019、3ds Max</h2>
+<h2 id="%E4%BD%BF%E7%94%A8%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AAbulletphysicseffekseerdirectxtk12">使用ライブラリ：BulletPhysics、Effekseer、DirectXTK12</h2>
+<h2 id="%E7%92%B0%E5%A2%83windows10directx12">環境：Windows10、DirectX12</h2>
+<h2 id="%E5%88%B6%E4%BD%9C%E4%BA%BA%E6%95%B03%E4%BA%BA">制作人数：3人</h2>
+<h2 id="%E5%88%B6%E4%BD%9C%E6%9C%9F%E9%96%934%E3%83%B5%E6%9C%88%E5%8D%8A">制作期間：4ヵ月半</h2>
+<h2 id="github--httpsgithubcomazuki2828mygamebrbr">GitHub : <a href="https://github.com/Azuki2828/MyGame" title="GitHub URL">https://github.com/Azuki2828/MyGame</a><br><br></h2>
+<h1 id="%E6%93%8D%E4%BD%9C%E8%AA%AC%E6%98%8E">操作説明</h1>
+<h2 id="j%E3%82%AD%E3%83%BC-or-a%E3%83%9C%E3%82%BF%E3%83%B3%E8%87%AA%E6%A9%9F%E3%81%AE%E7%A3%81%E6%A5%B5%E3%82%92%E5%A4%89%E6%8F%9Bbrbr">Jキー or Aボタン：自機の磁極を変換<br><br></h2>
+<p><img src = "image/howTo.png" ald = "操作説明" width = "512" height = "256"><br><br><br></p>
+<h1 id="%E6%8B%85%E5%BD%93%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89">担当ソースコード</h1>
+<p>BackGround.h<br>
+BackGround.cpp<br>
+ConstTriggerBoxValue.h<br>
+ConstValue.h<br>
+DeathBlock.h<br>
+DeathBlock.cpp<br>
+DirectionLight.h<br>
+DirectionLight.cpp<br>
+FontRender.h<br>
+FontRender.cpp<br>
+HUD.h<br>
+HUD.cpp<br>
+Key.h<br>
+Key.cpp<br>
+LightBase.h<br>
+LightBase.cpp<br>
+LightCamera.h<br>
+LightManager.h<br>
+LightManager.cpp<br>
+Magnet.h<br>
+Magnet.cpp<br>
+main.h<br>
+MainCamera.h<br>
+MainCamera.cpp<br>
+Player.h<br>
+Player.cpp<br>
+RuleSceneConstData.h<br>
+SaveData.h<br>
+SaveData.cpp<br>
+Seesaw.h<br>
+Seesaw.cpp<br>
+SkinModelRender.h<br>
+SkinModelRender.cpp<br>
+SoundManager.h<br>
+SoundManager.cpp<br>
+SpriteRender.h<br>
+SpriteRender.cpp<br>
+TreasureBox.h<br>
+TreasureBox.cpp<br><br></p>
+<p>deferredLighting.fx<br>
+gaussianBlur.fx<br>
+model.fx<br>
+postEffect.fx<br>
+sprite.fx<br>
+drawShadowMap.fx<br>
+shadowReciever.fx<br>
+Zprepass.fx<br></p>
+<p>また、上記含め、全てのコードのリファクタリングを担当。<br><br><br></p>
+<h1 id="%E6%94%B9%E9%80%A0%E3%81%97%E3%81%9F%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89br">改造したエンジンコード<br></h1>
+<p>RenderTarget.h(G-Buffer用のレンダーターゲットの作成及び取得を行う関数、データメンバを追加)<br>
+RenderTarget.cpp(静的メンバの初期化を行うコードを追加)<br>
+tkSoundSource.cpp(ファイルパスが通らなかった時に警告を出すコードを追加)<br>
+Vector.h(BulletPhysicsに対応する関数、インクルードを追加)<br><br><br></p>
+<h1 id="%E6%8A%80%E8%A1%93%E8%A6%81%E7%B4%A0">技術要素</h1>
+<h2 id="1pbr%E7%89%A9%E7%90%86%E3%83%99%E3%83%BC%E3%82%B9%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0">1.PBR（物理ベースレンダリング）</h2>
+<p>本作品ではディズニーベースのPBRを実装しており、<strong>フレネル反射を考慮した拡散反射</strong>、<strong>クックトランスモデル利用したスペキュラ反射</strong>を用いています。ランバート拡散反射では、入射してきた光よりも強い光を返すため、物理的に正しくはありませんでした。その値はπ倍であることが知られています。そのため、本作品ではその値をπで割った<strong>正規化ランバート拡散反射</strong>を採用しています。鏡面反射では、物体の金属度、なめらかさのパラメータを元に鏡面反射率を求めています。フォン鏡面反射ではこのパラメータが無かったため、視点からサーフェイスに伸びるベクトルと反射ベクトルしか鏡面反射に使うネタがありませんでした（絞り率は定数とする）。今回は各物体ごとにパラメータを設定し、不自然な金属感を出さないようにしています。これにより、エネルギー保存則に従ったライティング処理を実装しました。<br><br><br>
+<img src = "image/albedo.png" ald = "アルベド" width = "480" height = "256"><br>
+▲テクスチャカラーによるゲーム画面<br>
+<img src = "image/PBR.png" ald = "PBR" width = "480" height = "256"><br>
+▲PBR実装後のゲーム画面<br><br><br></p>
+<h2 id="2%E3%83%87%E3%83%97%E3%82%B9%E3%82%B7%E3%83%A3%E3%83%89%E3%82%A6">2.デプスシャドウ</h2>
+<br>
+影を生成する手法として、デプスシャドウを採用しています。投影シャドウではグレースケールをシャドウマップに描き込んでいましたが、ライトスクリーン空間でのZ値（深度値）をシャドウマップに描き込むように切り替えることにより、投影シャドウの欠点であった、「影が落ちないはずの場所に影が落ちてしまう」現象を克服しました。<br><br><br>
+以下がデプスシャドウの手順になります。<br><br><br>
+<h3 id="21%E3%82%B7%E3%83%A3%E3%83%89%E3%82%A6%E3%83%9E%E3%83%83%E3%83%97%E3%81%AE%E4%BD%9C%E6%88%90">2.1.シャドウマップの作成</h3>
+<p>1.シャドウマップ用のレンダーターゲットを作成する<br>
+2.ライトの位置にカメラを設置する<br>
+3.シャドウマップ描画用のモデルを用意する<br>
+4.シャドウマップ用のピクセルシェーダーを用意する<br>
+5.シャドウマップに用意した影用モデルを描画する<br><br></p>
+<p>今回はデプスシャドウなので、シェーダー側では、<strong>ライトからみた深度値を書き込みます</strong>。<br></p>
+<p>▼深度値が書き込まれたシャドウマップ<br>
+<img src = "image/shadowMap.png" ald = "ゲーム概要" width = "256" height = "256"></p>
+<h3 id="22%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E5%BD%B1%E3%82%92%E8%90%BD%E3%81%A8%E3%81%99">2.2.モデルに影を落とす</h3>
+<br>
+シャドウマップが出来たら、いよいよ影の描画に入ります。
+手順は以下のようになります。<br><br>
+1.定数バッファにライトカメラのビュープロジェクション行列を登録する<br>
+2.シャドウマップをシェーダーリソースビューに登録する<br>
+3.ライトビュースクリーン空間での座標を計算する<br>
+4.正規化スクリーン座標系に変換する<br>
+5.正規化スクリーン座標系からUV座標系に変換する<br>
+6.ライトビュースクリーン空間でのZ値を計算する<br>
+7.範囲内なら、シャドウマップに書き込まれているZ値と比較して影を落とす<br>
+<p><br><br>
+▼シャドウなし<br>
+<img src = "image/noShadow.png" ald = "ゲーム概要" width = "256" height = "256"><br>
+▼デプスシャドウあり<br>
+<img src = "image/depthShadow.png" ald = "ゲーム概要" width = "280" height = "256"><br><br></p>
+<h2 id="3%E5%B7%9D%E7%80%AC%E5%BC%8F%E3%83%96%E3%83%AB%E3%83%BC%E3%83%A0">3.川瀬式ブルーム</h2>
+<br>
+ぼかし表現にはガウシアンブラーを使用していますが、このブラーを一度だけでなく、複数回使用しています。その際に、ダウンサンプリング用のレンダリングターゲットを用意して、ガウスフィルターをかけて縮小します。それらを同解像度に拡大合成することであふれテクスチャを生成し、絶妙なブルームに仕上げています。<br><br>
+<img src = "image/Game.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+▲ブルームをかける前の画面<br><br><br>
+<img src = "image/luminance.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+▲輝度テクスチャ<br><br><br>
+<img src = "image/blur_1.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+<img src = "image/blur_2.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+<img src = "image/blur_3.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+<img src = "image/blur_4.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+▲輝度テクスチャを使用して４回ガウシアンブラーをかける。<br><br><br>
+<img src = "image/KawaseBloom.png" ald = "ゲーム概要" width = "460" height = "256"><br>
+▲ブルームをかけた後のゲーム画面
+<br><br><br>
+<h2 id="4%E8%BC%AA%E9%83%AD%E7%B7%9A%E3%81%AE%E5%AE%9F%E7%8F%BE">4.輪郭線の実現</h2>
+<br>
+輪郭線の実現のために、法線テクスチャ（G-Buffer）を生成しています。この法線テクスチャでは、あるテクセルの法線情報と周囲８テクセルの法線情報を比較し、その内積で、オブジェクトの角に近いか判定しています。<br><br>
+<img src = "image/edge_1.png" ald = "ゲーム概要" width = "540" height = "360"><br>
+<img src = "image/edge_2.png" ald = "ゲーム概要" width = "540" height = "360"><br>
+<img src = "image/edge_3.png" ald = "ゲーム概要" width = "540" height = "360"><br>
+<img src = "image/edge_4.png" ald = "ゲーム概要" width = "540" height = "360"><br>
+▼法線テクスチャ<br>
+<img src = "image/normal.png" ald = "ゲーム概要" width = "384" height = "256"><br>
+▼磁石の縁が黒くなっている。<br>
+<img src = "image/Game.png" ald = "ゲーム概要" width = "384" height = "256">
+<br><br><br>
+<h1 id="%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%81%A8%E8%8B%A6%E5%8A%B4%E3%81%97%E3%81%9F%E7%82%B9">こだわりと苦労した点</h1>
+<h2 id="1%E7%A3%81%E5%8A%9B%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">1.磁力について</h2>
+<p>プレイヤーは、磁石から受ける磁力で自機を進めていきます。そのため、ゴールするためには磁力の強さや自機の質量、摩擦などを調整する必要がありました。しかしそれ以上に問題だったのが磁力の影響範囲です。かつては自機と磁石の距離で磁力計算をしていました。そのため、ステージ全体に磁石が設置されていることもあり、想定していない磁石からも磁力を受けてしまい、まともに進めないということが起きてしまいました。そこで、<strong>磁力の影響範囲を、距離ではなくトリガーボックスを用いて行う</strong>ことにしました。<br><br><br>
+<img src = "image/TriggerBox.png" ald = "ゲーム概要" width = "540" height = "360"><br>▲赤線が影響範囲を示している<br><br><br>
+各磁石ごとに影響範囲を決めることで、ステージギミックも作りやすくなり、不自然な動きも抑えることができました。<br><br></p>
+<h2 id="2%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">2.ライトについて</h2>
+<p>このゲームは、各モデルごとに固有のライトを割り当てています。そのため、ステージが回転したときに全てのライトを半回転させる必要がありました。そこで、<strong>事前に半回転用のイベントを作成しておき、カメラが半回転すると同時にそのイベント（関数）を呼ぶ</strong>ことで、無駄の少ない処理にすることができました。</p>
+
+</body>
+</html>
